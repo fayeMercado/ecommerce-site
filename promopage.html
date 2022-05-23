@@ -29,13 +29,22 @@
       rel="stylesheet"
     />
 
-    <title>Coffee To Go | Promos</title>
+    <title>Coffee To Go | All Products</title>
     <link rel="icon" type="image/x-icon" href="images\favicon.svg" />
 
     <style>
       * {
         font-family: "Dosis", sans-serif;
         font-weight: 500;
+      }
+
+      #page {
+        width: 75%;
+        padding: 0px;
+      }
+
+      #main_content {
+        padding-bottom: 40px;
       }
 
       a {
@@ -55,6 +64,10 @@
         font-size: 0.875rem;
       }
 
+      .poppins {
+        font-family: "Poppins", sans-serif;
+      }
+
       .text-burly {
         color: burlywood;
       }
@@ -67,8 +80,23 @@
         color: #342924 !important;
       }
 
+      .anchor-top {
+        display: block;
+        height: 182px; /*same height as header*/
+        margin-top: -182px; /*same height as header*/
+        visibility: hidden;
+      }
+
+      .anchor-bottom {
+        display: block;
+        height: 38px;
+        margin-bottom: -38px;
+        visibility: hidden;
+      }
+
       #bg-img {
         object-fit: fill;
+        width: 100%;
         position: fixed;
         z-index: -50;
         opacity: 0.4;
@@ -78,7 +106,7 @@
         width: 75vw;
         height: 125px;
         background: floralwhite;
-        border-bottom: 2px dotted #342924;
+        border-bottom: 2px dashed #342924;
       }
 
       .logo-prod {
@@ -92,6 +120,7 @@
       }
 
       .soc-med {
+        color: burlywood;
         width: 30px;
       }
 
@@ -104,8 +133,8 @@
       }
 
       .custom-button:hover {
-        background-color: #342924;
-        color: white !important;
+        background-color: burlywood;
+        border: 1px solid burlywood;
       }
 
       .bag-button {
@@ -122,26 +151,28 @@
         color: burlywood !important;
       }
 
-      .category-item {
-        height: 55%;
-        border-radius: 50%;
-        border: none;
+      #category {
+        padding: 0 5% 0 5%;
       }
 
-      .category-item:hover {
-        outline: 1px solid #342924;
+      .category-item {
+        padding: 5px;
+        height: 70%;
+        border-radius: 50%;
         background-color: white;
       }
 
-      .active-category {
-        border: 1px solid #342924;
-        margin-bottom: 3px !important;
+      .category-item:hover {
+        box-shadow: 0 0 3px 1px #342924;
+      }
+
+      /* .active-category {
+        background-color: white;
       }
 
       .active-category-title {
         font-weight: 700;
-        font-size: 20px;
-      }
+      } */
 
       .active {
         font-weight: bolder !important;
@@ -164,19 +195,12 @@
         box-shadow: 0 0 8px 3px floralwhite;
       }
 
-      /* .listing {
-        width: 75vw;
-      } */
-
       .listing-category {
-        border-bottom: 2px dotted #342924;
+        margin-bottom: 2px;
       }
 
-      .anchor {
-        display: block;
-        height: 182px; /*same height as header*/
-        margin-top: -182px; /*same height as header*/
-        visibility: hidden;
+      .card:hover {
+        box-shadow: 0 0 5px 1px #342924;
       }
 
       .card-title-container {
@@ -187,15 +211,25 @@
         font-weight: bold;
       }
 
+      h5.card-title {
+        min-height: 55px;
+      }
+
       .icon-prop {
         color: #342924;
         opacity: 0.7;
         text-decoration: none;
+        position: relative;
+        z-index: 2;
       }
 
       .icon-like:hover {
         cursor: pointer;
         color: crimson;
+      }
+
+      .fa-regular.fa-star {
+        opacity: 0.25;
       }
 
       .tags {
@@ -214,321 +248,381 @@
         opacity: 50;
       }
 
-      footer {
-        width: 100%;
+      .footer {
         position: fixed;
         bottom: 0;
-      }
-
-      .footer {
-        width: 75vw;
-        height: 50px;
+        width: 75%;
+        height: 40px;
         background-color: floralwhite;
-        font-family: "Poppins", sans-serif;
-        font-size: 14px;
+        border-top: 2px dashed #342924;
+        z-index: 10;
       }
     </style>
   </head>
   <body>
     <!-- BACKGROUND -->
-    <img
-      src="images\background.svg"
-      alt=""
-      id="bg-img"
-      class="img-fluid vw-100"
-    />
+    <img src="images\background.svg" alt="" id="bg-img" class="img-fluid" />
 
-    <!-- TOP NAV -->
-    <div class="sticky-top">
-      <div class="top-nav-prod container d-flex p-2">
-        <!-- LOGO -->
-        <div
-          class="container col-2 d-flex align-content-center justify-content-center p-3"
-        >
-          <a href="homepage.html"
-            ><img src="images\logo-dark.svg" alt="" class="logo-prod"
-          /></a>
-        </div>
-
-        <!-- CATEGORIES -->
-        <div
-          id="category"
-          class="container d-flex justify-content-around col-7 mt-3"
-        >
-          <div class="position-relative text-center">
-            <a href="product.html#brewed">
-              <img
-                src="images\cat-coffee.svg"
-                alt=""
-                class="category-item mb-2"
-              />
-              <div>FRESHLY BREWED</div></a
-            >
-          </div>
-          <div class="position-relative text-center">
-            <a href="product.html#baked">
-              <img
-                src="images\cat-pastry.svg"
-                alt=""
-                class="category-item mb-2"
-              />
-              <div>FRESHLY BAKED</div></a
-            >
-          </div>
-          <div class="position-relative text-center">
-            <a href="product.html#top">
-              <img
-                src="images\cat-all.svg"
-                alt=""
-                class="category-item mb-2 active-category"
-              />
-              <div class="active-category-title">ALL PRODUCTS</div></a
-            >
-          </div>
-          <div class="position-relative text-center">
-            <a href="product.html#beans">
-              <img
-                src="images\cat-beans.svg"
-                alt=""
-                class="category-item mb-2"
-              />
-              <div>BREW AT HOME</div></a
-            >
-          </div>
-          <div class="position-relative text-center">
-            <a href="product.html#merch">
-              <img
-                src="images\cat-merch.svg"
-                alt=""
-                class="category-item mb-2"
-              />
-              <div>MERCH</div></a
-            >
-          </div>
-        </div>
-
-        <!-- SIGN IN-UP -->
-        <div
-          class="opacity-p8 container col-3 d-flex align-self-center justify-content-center"
-        >
-          <button type="button" class="custom-button mx-1">
-            <a href="">SIGN IN</a>
-          </button>
-          <button type="button" class="custom-button mx-1">
-            <a href="">SIGN UP</a>
-          </button>
-          <button
-            type="button"
-            class="bag-button position-relative text-center mx-2"
+    <div id="page" class="container d-flex flex-column p-0">
+      <!-- TOP NAV -->
+      <div class="sticky-top">
+        <div class="top-nav-prod container d-flex p-2">
+          <!-- LOGO -->
+          <div
+            class="container col-2 d-flex align-content-center justify-content-center p-3"
           >
-            <i class="fa-solid fa-bag-shopping bag text-brown"></i>
-            <span
-              class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
-            >
-              2
-            </span>
-          </button>
-        </div>
-      </div>
-      <!-- NAV TAB -->
-      <div class="container navbar navbar-expand-lg navbar-light bg-white p-2">
-        <div class="container-fluid">
-          <div class="nav-item text-burly" href="#">Show:</div>
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
+            <a href="homepage.html"
+              ><img src="images\logo-dark.svg" alt="" class="logo-prod"
+            /></a>
+          </div>
+
+          <!-- CATEGORIES -->
+          <div
+            id="category"
+            class="container d-flex justify-content-around col-7 mt-2"
           >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">All</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">New Products</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Best Sellers</a>
-              </li>
-              <li class="nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle"
-                  href="#"
-                  id="navbarDropdown"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  Sort by
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li>
-                    <a class="dropdown-item" href="#">Price: Low to High</a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#">Price: High to Low</a>
-                  </li>
-                  <li><hr class="dropdown-divider" /></li>
-                  <li>
-                    <a class="dropdown-item" href="#">Rating</a>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-            <form class="d-flex searchbar">
-              <input
-                class="form-control m-0 search-input"
-                type="search"
-                placeholder="Search Products"
-                aria-label="Search Products"
-              />
-              <button class="btn btn-light m-0" type="submit">
+            <div class="position-relative text-center">
+              <a href="product.html#brewed">
                 <img
-                  src="https://raw.githubusercontent.com/eirikmadland/notion-icons/master/v5/icon3/mt-search.svg"
+                  src="images\cat-coffee.svg"
                   alt=""
-                  width="20px"
+                  class="category-item mb-1"
                 />
-              </button>
-            </form>
+                <div>FRESHLY BREWED</div></a
+              >
+            </div>
+            <div class="position-relative text-center">
+              <a href="product.html#baked">
+                <img
+                  src="images\cat-pastry.svg"
+                  alt=""
+                  class="category-item mb-1"
+                />
+                <div>FRESHLY BAKED</div></a
+              >
+            </div>
+
+            <div class="position-relative text-center">
+              <a href="product.html#top">
+                <img
+                  src="images\cat-all.svg"
+                  alt=""
+                  class="category-item mb-1"
+                />
+                <div>ALL PRODUCTS</div></a
+              >
+            </div>
+
+            <div class="position-relative text-center">
+              <a href="product.html#beans">
+                <img
+                  src="images\cat-beans.svg"
+                  alt=""
+                  class="category-item mb-1"
+                />
+                <div>BREW AT HOME</div></a
+              >
+            </div>
+            <div class="position-relative text-center">
+              <a href="product.html#merch">
+                <img
+                  src="images\cat-merch.svg"
+                  alt=""
+                  class="category-item mb-1"
+                />
+                <div>MERCH</div></a
+              >
+            </div>
           </div>
+
+          <!-- SIGN IN-UP -->
+          <div
+            class="opacity-p8 container col-3 d-flex align-self-center justify-content-center"
+          >
+            <button type="button" class="custom-button mx-1">
+              <a href="">SIGN IN</a>
+            </button>
+            <button type="button" class="custom-button mx-1">
+              <a href="">SIGN UP</a>
+            </button>
+            <button
+              type="button"
+              class="bag-button position-relative text-center mx-2"
+            >
+              <i class="fa-solid fa-bag-shopping bag text-brown"></i>
+              <span
+                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+              >
+                2
+              </span>
+            </button>
+          </div>
+
+          <!-- NAV TAB -->
         </div>
-      </div>
-    </div>
-
-    <!-- LISTING -->
-    <div class="listing container p-0 mt-2">
-      <!-- ANNIV SPECIALS -->
-      <div class="container p-0">
-        <img src="images\ads1.gif" alt="" class="img-fluid" />
-      </div>
-      <div id="anniv" class="anchor"></div>
-      <div class="container listing-category mt-3">
-        <h2>Anniversary Specials</h2>
-        <div class="row mb-2">
-          <!-- PRODUCT 1 -->
-          <div class="col-md-3 col-lg-4 col-xl-2 p-1">
-            <div class="card my-2">
-              <img
-                src="images\placeholder.png"
-                class="card-img-top"
-                alt="..."
-              />
-              <div class="card-body py-2">
-                <div class="card-title-container">
-                  <h5 class="card-title text-center invisible">Iced Latte</h5>
-                  <div class="text-center price invisible">&#8369;125</div>
-                </div>
-                <div class="invisible">
-                  <span class="tags px-1">Best Seller</span>
-                </div>
-                <div class="container d-flex p-0 my-2">
-                  <div class="w-25">
-                    <a class="fa-regular fa-heart icon-like icon-prop"></a>
-                  </div>
-                  <div class="w-75 text-end">
-                    <i class="fa-solid fa-star icon-prop"></i>
-                    <i class="fa-solid fa-star icon-prop"></i>
-                    <i class="fa-solid fa-star icon-prop"></i>
-                    <i class="fa-solid fa-star icon-prop"></i>
-                    <i class="fa-solid fa-star icon-prop"></i>
-                  </div>
-                </div>
-
-                <div class="d-flex justify-content-center">
-                  <a href="#" class="custom-button font-14 text-center"
-                    >Add to Bag</a
+        <div
+          class="container navbar navbar-expand-lg navbar-light bg-white p-2"
+        >
+          <div class="container-fluid">
+            <div class="nav-item text-burly" href="#">Show:</div>
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="#"
+                    >All</a
                   >
-                </div>
-              </div>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Best Sellers</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Favorites</a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a
+                    class="nav-link dropdown-toggle"
+                    href="#"
+                    id="navbarDropdown"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    Sort by
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li>
+                      <a class="dropdown-item" href="#">Price: Low to High</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#">Price: High to Low</a>
+                    </li>
+                    <li><hr class="dropdown-divider" /></li>
+                    <li>
+                      <a class="dropdown-item" href="#">Newest</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#">Rating</a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+
+              <!-- SEARCH BAR -->
+              <form action="product.html" class="d-flex searchbar w-25">
+                <input
+                  class="form-control m-0 search-input"
+                  type="search"
+                  placeholder="Search Products"
+                  aria-label="Search Products"
+                />
+                <button class="btn btn-light m-0" type="submit">
+                  <img
+                    src="https://raw.githubusercontent.com/eirikmadland/notion-icons/master/v5/icon3/mt-search.svg"
+                    alt=""
+                    width="20px"
+                  />
+                </button>
+              </form>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- NEW PRODUCTS -->
-      <div id="new" class="anchor"></div>
-      <div class="container p-0">
-        <img src="images\ads2.gif" alt="" class="img-fluid" />
-      </div>
-      <div class="container listing-category mt-3">
-        <h2>New Products</h2>
-        <div class="row mb-2">
-          <!-- PRODUCT 1 -->
-          <div class="col-md-3 col-lg-4 col-xl-2 p-1">
-            <div class="card my-2">
-              <img
-                src="images\placeholder.png"
-                class="card-img-top"
-                alt="..."
-              />
-              <div class="card-body py-2">
-                <div class="card-title-container">
-                  <h5 class="card-title text-center invisible">Iced Latte</h5>
-                  <div class="text-center price invisible">&#8369;125</div>
-                </div>
-                <div class="invisible">
-                  <span class="tags px-1">Best Seller</span>
-                </div>
-                <div class="container d-flex p-0 my-2">
-                  <div class="w-25">
-                    <a class="fa-regular fa-heart icon-like icon-prop"></a>
+      <div id="main_content" class="container p-0">
+        <!-- LISTING 1-->
+        <div class="listing container p-0">
+          <div class="container p-0">
+            <img
+              src="images\title-anniv.svg"
+              alt=""
+              class="img-fluid mb-2 p-0"
+            />
+          </div>
+          <div class="row mb-2 p-1">
+            <!-- PRODUCT 1 -->
+            <div class="col-md-4 col-lg-3 col-xl-2 p-2">
+              <div class="card my-2 position-relative">
+                <a href="item.html" class="stretched-link"></a>
+                <img
+                  src="images\cappuccino.png"
+                  class="card-img-top"
+                  alt="..."
+                />
+                <div class="card-body py-2">
+                  <div class="card-title-container">
+                    <h5 class="card-title text-center">Iced Capuccino</h5>
+                    <div class="text-center">
+                      <span class="text-muted price discount px-2"
+                        >&#8369;150</span
+                      ><span class="text-danger price">&#8369;120</span>
+                    </div>
                   </div>
-                  <div class="w-75 text-end">
-                    <i class="fa-solid fa-star icon-prop"></i>
-                    <i class="fa-solid fa-star icon-prop"></i>
-                    <i class="fa-solid fa-star icon-prop"></i>
-                    <i class="fa-solid fa-star icon-prop"></i>
-                    <i class="fa-solid fa-star icon-prop"></i>
+                  <div class="invisible">
+                    <span class="tags px-1">Anniversary Special</span>
+                  </div>
+                  <div class="container d-flex p-0 my-2">
+                    <div class="w-25">
+                      <a class="fa-regular fa-heart icon-like icon-prop"></a>
+                    </div>
+                    <div class="w-75 text-end">
+                      <i class="fa-solid fa-star icon-prop"></i>
+                      <i class="fa-solid fa-star icon-prop"></i>
+                      <i class="fa-solid fa-star icon-prop"></i>
+                      <i class="fa-solid fa-star icon-prop"></i>
+                      <i class="fa-regular fa-star icon-prop"></i>
+                    </div>
                   </div>
                 </div>
+              </div>
+            </div>
 
-                <div class="d-flex justify-content-center">
-                  <a href="#" class="custom-button font-14 text-center"
-                    >Add to Bag</a
-                  >
+            <!-- PRODUCT 2 -->
+            <div class="col-md-4 col-lg-3 col-xl-2 p-2">
+              <div class="card my-2 position-relative">
+                <a href="item.html" class="stretched-link"></a>
+                <img
+                  src="images\h-cappucino.png"
+                  class="card-img-top"
+                  alt="..."
+                />
+                <div class="card-body py-2">
+                  <div class="card-title-container">
+                    <h5 class="card-title text-center">Hot Cappuccino</h5>
+                    <div class="text-center">
+                      <span class="text-muted price discount px-2"
+                        >&#8369;125</span
+                      ><span class="text-danger price">&#8369;100</span>
+                    </div>
+                  </div>
+                  <div class="invisible">
+                    <span class="tags px-1">Anniversary Special</span>
+                  </div>
+                  <div class="container d-flex p-0 my-2">
+                    <div class="w-25">
+                      <a class="fa-regular fa-heart icon-like icon-prop"></a>
+                    </div>
+                    <div class="w-75 text-end">
+                      <i class="fa-solid fa-star icon-prop"></i>
+                      <i class="fa-solid fa-star icon-prop"></i>
+                      <i class="fa-solid fa-star icon-prop"></i>
+                      <i class="fa-regular fa-star icon-prop"></i>
+                      <i class="fa-regular fa-star icon-prop"></i>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
+        <!-- LISTING 2-->
+        <div id="new" class="anchor-top"></div>
+        <div class="listing container p-0">
+          <div class="container p-0">
+            <img src="images\title-new.svg" alt="" class="img-fluid mb-2 p-0" />
+          </div>
+          <div class="row mb-2 p-1">
+            <!-- PRODUCT 1 -->
+            <div class="col-md-4 col-lg-3 col-xl-2 p-2">
+              <div class="card my-2 position-relative">
+                <a href="item.html" class="stretched-link"></a>
+                <img src="images\macha.png" class="card-img-top" alt="..." />
+                <div class="card-body py-2">
+                  <div class="card-title-container">
+                    <h5 class="card-title text-center">Iced Macha Green Tea</h5>
+                    <div class="text-center price">&#8369;200</div>
+                  </div>
+                  <div class="invisible">
+                    <span class="tags px-1">New Product</span>
+                  </div>
+                  <div class="container d-flex p-0 my-2">
+                    <div class="w-25">
+                      <a class="fa-regular fa-heart icon-like icon-prop"></a>
+                    </div>
+                    <div class="w-75 text-end">
+                      <i class="fa-regular fa-star icon-prop"></i>
+                      <i class="fa-regular fa-star icon-prop"></i>
+                      <i class="fa-regular fa-star icon-prop"></i>
+                      <i class="fa-regular fa-star icon-prop"></i>
+                      <i class="fa-regular fa-star icon-prop"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
 
-    <footer class="container-fluid d-flex p-0 justify-content-center">
+            <!-- PRODUCT 2 -->
+            <div class="col-md-4 col-lg-3 col-xl-2 p-2">
+              <div class="card my-2 position-relative">
+                <a href="item.html" class="stretched-link"></a>
+                <img src="images\h-tea.png" class="card-img-top" alt="..." />
+                <div class="card-body py-2">
+                  <div class="card-title-container">
+                    <h5 class="card-title text-center">Hot Green Tea</h5>
+                    <div class="text-center price">&#8369;200</div>
+                  </div>
+                  <div class="invisible">
+                    <span class="tags px-1">New Product</span>
+                  </div>
+                  <div class="container d-flex p-0 my-2">
+                    <div class="w-25">
+                      <a class="fa-regular fa-heart icon-like icon-prop"></a>
+                    </div>
+                    <div class="w-75 text-end">
+                      <i class="fa-regular fa-star icon-prop"></i>
+                      <i class="fa-regular fa-star icon-prop"></i>
+                      <i class="fa-regular fa-star icon-prop"></i>
+                      <i class="fa-regular fa-star icon-prop"></i>
+                      <i class="fa-regular fa-star icon-prop"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="anchor-bottom"></div>
+      </div>
+
       <div
-        class="footer mt-auto container d-flex align-items-center justify-content-between mt-5"
+        class="footer container d-flex align-items-center justify-content-between"
       >
-        <div class="text-muted">&copy; 2022 COFFEE TO GO</div>
+        <div class="poppins text-burly">&copy; 2022 COFFEE TO GO</div>
         <!-- SOC MED -->
         <div class="d-flex align-items-center">
-          <div class="text-muted mx-3">FOLLOW US ON</div>
+          <div class="poppins text-burly mx-2">FOLLOW US ON</div>
           <a href="">
             <img
-              src="https://img.icons8.com/ios/250/342924/facebook-new.png"
+              src="https://img.icons8.com/ios/250/deb887/facebook-new.png"
               alt="Facebook"
               class="soc-med mx-2"
             />
           </a>
           <a href="">
             <img
-              src="https://img.icons8.com/ios/250/342924/instagram-new.png"
+              src="https://img.icons8.com/ios/250/deb887/instagram-new.png"
               alt="Instagram"
               class="soc-med mx-2"
           /></a>
           <a href="">
             <img
-              src="https://img.icons8.com/ios/250/342924/twitter.png"
+              src="https://img.icons8.com/ios/250/deb887/twitter.png"
               alt="Twitter"
               class="soc-med mx-2"
           /></a>
         </div>
       </div>
-    </footer>
+    </div>
   </body>
 </html>
