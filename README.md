@@ -1,5 +1,5 @@
 # ecommerce-site
-Coffee Shop Ecommerce Website
+<h3>Coffee Shop Ecommerce Website</h3>
 
 Demo @ https://fayemercado.github.io/ecommerce-site/
 
