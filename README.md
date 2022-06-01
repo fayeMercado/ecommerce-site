@@ -1,5 +1,6 @@
-# Ecommerce-Site-Sample
-Coffee Shop Ecommerce Website 
+# ecommerce-site
+Coffee Shop Ecommerce Website
 
-Project preview
-https://mfmercado.github.io/Ecommerce-Site-Sample/homepage
+Demo @ https://fayemercado.github.io/ecommerce-site/
+
+<i>Coffee To Go is a brand created only for the purpose of this sample website. All photos used are for educational and sample purposes only.</i>
